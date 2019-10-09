@@ -1,0 +1,240 @@
+<htmlform>
+	<macros>
+		paperFormId = (Fill this in)
+		headerColor =#009d8e
+		fontOnHeaderColor = white
+	</macros>
+
+	<style>
+		.section {
+			border: 1px solid $headerColor;
+			padding: 2px;
+			text-align: left;
+			margin-bottom: 1em;
+		}
+		.sectionHeader {
+			background-color: $headerColor;
+			color: $fontOnHeaderColor;
+			display: block;
+			padding: 2px;
+			font-weight: bold;
+		}
+		table.baseline-aligned td {
+			vertical-align: baseline;
+		}
+	</style>
+
+<script>
+    $j(document).ready(function(){
+        if($j("#conditions_div").text().includes("Concept #117399")){
+            $j("#1-toggleContainer").show();
+            console.log("Hi");
+            if($j("#conditions_div").text().includes("Concept #44")) {
+                $j("#1-PregDrugs").show();
+                $j("#2-PregDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165097")) {
+                console.log("Hello");
+                $j("#1-CKDDrugs").show();
+                $j("#2-CKDDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165304")) {
+                $j("#1-SurgeryDrugs").show();
+                $j("#2-SurgeryDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165248")) {
+                $j("#1-PeripheralArtDrugs").show();
+                $j("#2-PeripheralArtDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165302")) {
+                $j("#1-HTCEmergencyDrugs").show();
+                $j("#2-HTCEmergencyDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165250")) {
+                $j("#1-IHDDrugs").show();
+                $j("#2-IHDDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165254")) {
+                $j("#1-AorticDrugs").show();
+                $j("#2-AorticDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #119481")) {
+                $j("#1-DMDrugs").show();
+                $j("#2-DMDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165255")) {
+                $j("#1-ValvularDrugs").show();
+                $j("#2-ValvularDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165256")) {
+                $j("#1-AtrialFibrillDrugs").show();
+                $j("#2-AtrialFibrillDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165298")) {
+                $j("#1-RenalTransplantationDrugs").show();
+                $j("#2-RenalTransplantationDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165292")) {
+                $j("#1-MIDrugs").show();
+                $j("#2-MIDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165300")) {
+                $j("#1-SecondarystrokeDrugs").show();
+                $j("#2-SecondarystrokeDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165297")) {
+                $j("#1-HFPEFDrugs").show();
+                $j("#2-HFPEFDrugs").show();
+                return false;
+            }
+
+            if($j("#conditions_div").text().includes("Concept #165296")) {
+                $j("#1-HFREFDrugs").show();
+                $j("#2-HFREFDrugs").show();
+                return false;
+            }
+
+            $j("#1-HTNDrugs").show();
+            $j("#2-HTNDrugs").show();
+        }
+    
+    });
+</script>
+<script type="text/javascript">
+    if(jQuery){
+var med1 = ["Enalapril","Losartan"];
+var med2 = ["Chlorthalidone","Amlodipine","Atenolol"];
+        $j(document).ready(function(){
+            $j('#1-removeEntry').remove();
+            $j('#2-addEntry').remove();
+    
+            $j('#3-removeEntry').remove();
+            $j('#20-addEntry').remove();
+        });   
+     $j(document).ready(function(){
+            $j('button.addEntry').on("click", function(){
+                var correctedAddButtonId = parseFloat(this.id) + 1;
+                var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                var val = $j(w1).children(":selected").text();
+                if(val==="Losartan" || val === "Enalapril"){
+                console.log(val);
+                $j(contentAddId).find('option:contains("Enalapril")').hide();
+                $j(contentAddId).find('option:contains("Losartan")').hide(); 
+                }else{
+                    $j(contentAddId).find('option:contains("Enalapril")').show();
+                    $j(contentAddId).find('option:contains("Losartan")').show(); 
+                }
+                
+                
+                //$j(contentAddId).find('option:contains("'+val+'")').hide();       
+                // $j(contentAddId).toggle(true);
+                $j(contentAddId).show();
+                $j('#' + this.id).toggle(false); 
+                $j('#' + parseFloat(this.id) + '-removeEntry').toggle(false);
+                return false;
+            });
+        });
+        $j(document).ready(function(){
+            $j('button.removeEntry').on("click", function(){
+                var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                $j(contentAddId).toggle(false);
+                $j( ':input:not(:button)', contentAddId).val([]);
+                $j('#' + correctedRemoveButtonId + '-addEntry').toggle(true); 
+                $j('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+                return false;
+            });
+        });
+    }
+</script>
+           
+<div id="conditions_div" style="display: none;"><lookup complexExpression="#foreach($w18 in $fn.allObs(12)) $w18.valueCoded #end"/></div>
+<section headerLabel="1. Drug Order">
+
+<repeat>
+    <template>
+        <div class="conditionsDiv" id="{n}-toggleContainer" style="display:none;">                        
+            <table>
+                <tr>
+                    <span style="display: none;" id="{n}-HTNDrugs">Drug order: <drugOrder drugNames='4e22bf42-e74f-423f-af9a-92a79de7da09,a62212b4-d47c-445f-a854-5d790b718a26,4b2b3d67-a8ec-4fe7-b686-f3d65f9e92f2,2b23e309-7e5d-481e-9580-90a002c438d8' validateDose='true' hideDoseAndFrequency="true" /></span>
+                    <span style="display: none;" id="{n}-PregDrugs">Drug order: <drugOrder drugNames='ecaa4be6-e55c-4e42-9f05-50634652fe61, 0adb6228-f221-4b21-bcb6-a755cf87a2be, ba2dfbca-20fe-4a07-9569-b2353973db09' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+                    <span style="display: none;" id="{n}-CKDDrugs">Drug order: <drugOrder drugNames='4e22bf42-e74f-423f-af9a-92a79de7da09, 4b2b3d67-a8ec-4fe7-b686-f3d65f9e92f2, 0f7c5aac-0d92-49bd-9152-89668c1143ca, ec2e451c-e527-44b9-a411-705ea585c425, e5f5f801-3277-4964-b1f4-278d030c4732, 9a5a407e-e50d-410b-abe1-6b986da8743d' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+                    <span style="display: none;" id="{n}-SurgeryDrugs">Drug order: <drugOrder drugNames='fea436f1-c346-4a03-aeee-a671b2e9ae5b, e17cea39-c623-49e5-9829-695ab7d20f4e, 97ec094a-98d1-4936-8aa7-73b1c403bde4' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+                    <span style="display: none;" id="{n}-PeripheralArtDrugs">Drug order: <drugOrder drugNames='a62212b4-d47c-445f-a854-5d790b718a26,4e22bf42-e74f-423f-af9a-92a79de7da09, 4b2b3d67-a8ec-4fe7-b686-f3d65f9e92f2, 2b23e309-7e5d-481e-9580-90a002c438d8' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+                    <span style="display: none;" id="{n}-HTCEmergencyDrugs">Drug order: <drugOrder drugNames='1bbfc3e1-9eb5-4542-863c-18efabf0e83e,ba2dfbca-20fe-4a07-9569-b2353973db09
+                    , 032aacf1-30ec-4ce9-a12c-cc6d8eccf16a,	53a16b4f-0400-40ef-b2a8-f01afefc3e0f ' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+                    <span style="display: none;" id="{n}-IHDDrugs">Drug order: <drugOrder drugNames='fea436f1-c346-4a03-aeee-a671b2e9ae5b, e17cea39-c623-49e5-9829-695ab7d20f4e, 4e22bf42-e74f-423f-af9a-92a79de7da09,0f7c5aac-0d92-49bd-9152-89668c1143ca' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+
+                    <span style="display: none;" id="{n}-AorticDrugs">Drug order: <drugOrder drugNames='fea436f1-c346-4a03-aeee-a671b2e9ae5b, e22d484f-c87f-4813-bb2c-76a462291d09,0a9637d8-c3b6-4503-b276-eb521c0cf6fd ' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+
+                    <span style="display: none;" id="{n}-DMDrugs">Drug order: <drugOrder drugNames='4e22bf42-e74f-423f-af9a-92a79de7da09,ec2e451c-e527-44b9-a411-705ea585c425,0f7c5aac-0d92-49bd-9152-89668c1143ca,4b2b3d67-a8ec-4fe7-b686-f3d65f9e92f2, 8e7f2228-b7a3-4d82-86f2-f04f81382e37
+                    ,9a5a407e-e50d-410b-abe1-6b986da8743d' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+                    <span style="display: none;" id="{n}-ValvularDrugs">Drug order: <drugOrder drugNames='4e22bf42-e74f-423f-af9a-92a79de7da09, d904c161-1440-4726-b536-b6ae1ca59970, 	4b2b3d67-a8ec-4fe7-b686-f3d65f9e92f2
+                    , a62212b4-d47c-445f-a854-5d790b718a26' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+                    <span style="display: none;" id="{n}-AtrialFibrillDrugs">Drug order: <drugOrder drugNames='	4b2b3d67-a8ec-4fe7-b686-f3d65f9e92f2,9a5a407e-e50d-410b-abe1-6b986da8743d, 23bbe72e-48bc-434b-821b-88cd9fa48605,d9eba1f2-e215-4c81-8b68-4e29621695d9
+                    ' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+
+                    <span style="display: none;" id="{n}-RenalTransplantationDrugs">Drug order: <drugOrder drugNames='d904c161-1440-4726-b536-b6ae1ca59970, 0adb6228-f221-4b21-bcb6-a755cf87a2be,	53a16b4f-0400-40ef-b2a8-f01afefc3e0f ' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+
+                    <span style="display: none;" id="{n}-MIDrugs">Drug order: <drugOrder drugNames='fea436f1-c346-4a03-aeee-a671b2e9ae5b
+                    , c3cc812d-2122-46db-92b5-a8e8b6fda041, e17cea39-c623-49e5-9829-695ab7d20f4e
+                    ' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+                    <span style="display: none;" id="{n}-SecondarystrokeDrugs">Drug order: <drugOrder drugNames='6e9bf77b-95ce-4040-bb77-80d63287990a, 4e22bf42-e74f-423f-af9a-92a79de7da09, 4b2b3d67-a8ec-4fe7-b686-f3d65f9e92f2' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+
+                    <span style="display: none;" id="{n}-HFPEFDrugs">Drug order: <drugOrder drugNames='4e22bf42-e74f-423f-af9a-92a79de7da09, 4b2b3d67-a8ec-4fe7-b686-f3d65f9e92f2,fea436f1-c346-4a03-aeee-a671b2e9ae5b ' validateDose='true' hideDoseAndFrequency="true" /></span>
+
+                    <span style="display: none;" id="{n}-HFREFDrugs">Drug order: <drugOrder drugNames='fea436f1-c346-4a03-aeee-a671b2e9ae5b,4e22bf42-e74f-423f-af9a-92a79de7da09 ' validateDose='true' hideDoseAndFrequency="true" /></span>
+                    <br/>
+                    <td><button id="{n}-addEntry" class="addEntry">+ Add</button><button id="{n}-removeEntry" class="removeEntry">Remove</button></td>
+                    <br/>
+                </tr>
+            </table>
+        </div>
+    </template>
+    <render n="1" />
+    <render n="2" />
+</repeat>
+</section>
+
+
+        <submit />	
+</htmlform>
